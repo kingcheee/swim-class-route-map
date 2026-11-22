@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>수영반 노선도</title>
+<!-- 의존성 0 · CDN 0 · 웹폰트 0. 데이터는 data.js(클래식 스크립트)로 싣는다. -->
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div>
+    <h1 class="brand">수영반 노선도</h1>
+    <p class="sub">한국체육산업개발 수영 강좌 기록으로 그린 반의 진급 경로</p>
+  </div>
+  <span class="fixture-badge" id="fixtureBadge"></span>
+</header>
+
+<main class="stage">
+
+  <!-- ① 고르기 -->
+  <section class="panel" id="panel-pick">
+    <h2 class="panel-title">1 · 고르기</h2>
+    <div class="pick-row"><span class="pick-label">센터</span><div class="chips" id="chipsCenter"></div></div>
+    <div class="pick-row"><span class="pick-label">누가</span><div class="chips" id="chipsWho"></div></div>
+    <div class="pick-row"><span class="pick-label">시간대</span><div class="chips" id="chipsBand"></div></div>
+    <div class="pick-row"><span class="pick-label">요일</span><div class="chips" id="chipsDays"></div></div>
+    <div class="pick-row"><span class="pick-label">배울 차례</span><div class="chips" id="chipsStation"></div></div>
+    <p class="hint" id="stationHint"></p>
+    <div class="row"><button class="btn btn-primary" id="goBtn" data-demo="go">노선도 보기</button></div>
+  </section>
+
+  <!-- ② 노선도 (갈림점) -->
+  <section class="panel panel-pivot" id="panel-map" data-state="idle">
+    <h2 class="panel-title">2 · 노선도 <span class="title-note" id="mapMonth"></span></h2>
+    <div class="banner" id="frozenBanner" hidden></div>
+    <div class="result-empty" id="mapEmpty">위에서 고르고 「노선도 보기」를 누르세요.</div>
+    <div class="map-wrap" id="mapWrap" hidden><table class="map" id="mapTable"></table></div>
+    <div class="legend" id="legend" hidden></div>
+    <div class="answer" id="answer" hidden></div>
+  </section>
+
+  <!-- ③ 출발 기록 -->
+  <section class="panel" id="panel-dep">
+    <h2 class="panel-title">3 · 입문반(신기초) 출발 기록 <span class="title-note" id="depNote"></span></h2>
+    <div class="map-wrap"><table class="dep" id="depTable"></table></div>
+    <p class="hint small">칸의 숫자는 그 달 그 시간에 「신기초」 이름을 새로 단 반의 수입니다. 회색 칸은 파일에 그 달 기록이 없는 달입니다.</p>
+  </section>
+
+  <!-- ④ 반 하나의 이력 -->
+  <section class="panel" id="panel-train">
+    <h2 class="panel-title">4 · 반 한 개의 이력 <span class="title-note">노선도의 반을 누르세요</span></h2>
+    <div class="result-empty" id="trainEmpty">아직 고른 반이 없습니다.</div>
+    <div id="trainBox" hidden></div>
+  </section>
+
+  <details class="panel memo" id="memo">
+    <summary data-demo="memo">데이터 메모 · 원자료와 한계</summary>
+    <div id="memoBody"></div>
+  </details>
+
+</main>
+
+<footer class="foot">
+  <span id="footNote"></span>
+</footer>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
